@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_5.onlineinternship" default="compile.module.5.onlineinternship">
+  <dirname property="module.5.onlineinternship.basedir" file="${ant.file.module_5.onlineinternship}"/>
+  
+  <property name="module.jdk.home.5.onlineinternship" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.5.onlineinternship" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.5.onlineinternship" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.5.onlineinternship" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="5.onlineinternship.output.dir" value="${module.5.onlineinternship.basedir}/../out/production/5.OnlineInternship"/>
+  <property name="5.onlineinternship.testoutput.dir" value="${module.5.onlineinternship.basedir}/../out/test/5.OnlineInternship"/>
+  
+  <path id="5.onlineinternship.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="5.onlineinternship.module.production.classpath">
+    <path refid="${module.jdk.classpath.5.onlineinternship}"/>
+  </path>
+  
+  <path id="5.onlineinternship.runtime.production.module.classpath">
+    <pathelement location="${5.onlineinternship.output.dir}"/>
+  </path>
+  
+  <path id="5.onlineinternship.module.classpath">
+    <path refid="${module.jdk.classpath.5.onlineinternship}"/>
+    <pathelement location="${5.onlineinternship.output.dir}"/>
+  </path>
+  
+  <path id="5.onlineinternship.runtime.module.classpath">
+    <pathelement location="${5.onlineinternship.testoutput.dir}"/>
+    <pathelement location="${5.onlineinternship.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.5.onlineinternship">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.5.onlineinternship">
+    <patternset refid="excluded.from.module.5.onlineinternship"/>
+  </patternset>
+  
+  <path id="5.onlineinternship.module.sourcepath">
+    <dirset dir="${module.5.onlineinternship.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.5.onlineinternship" depends="compile.module.5.onlineinternship.production,compile.module.5.onlineinternship.tests" description="Compile module 5.OnlineInternship"/>
+  
+  <target name="compile.module.5.onlineinternship.production" depends="register.custom.compilers" description="Compile module 5.OnlineInternship; production classes">
+    <mkdir dir="${5.onlineinternship.output.dir}"/>
+    <javac2 destdir="${5.onlineinternship.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.5.onlineinternship}/javac">
+      <compilerarg line="${compiler.args.5.onlineinternship}"/>
+      <bootclasspath refid="5.onlineinternship.module.bootclasspath"/>
+      <classpath refid="5.onlineinternship.module.production.classpath"/>
+      <src refid="5.onlineinternship.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.5.onlineinternship"/>
+    </javac2>
+    
+    <copy todir="${5.onlineinternship.output.dir}">
+      <fileset dir="${module.5.onlineinternship.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.5.onlineinternship.tests" depends="register.custom.compilers,compile.module.5.onlineinternship.production" description="compile module 5.OnlineInternship; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.5.onlineinternship" description="cleanup module">
+    <delete dir="${5.onlineinternship.output.dir}"/>
+    <delete dir="${5.onlineinternship.testoutput.dir}"/>
+  </target>
+</project>

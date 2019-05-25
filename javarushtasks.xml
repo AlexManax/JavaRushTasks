@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="javarushtasks" default="all">
+  
+  
+  <property file="javarushtasks.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.klib"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.com.github.finagle:finch-jackson_2.12:0.15.1.classpath">
+    <pathelement location="${basedir}/lib/caffeine-2.3.4.jar"/>
+    <pathelement location="${basedir}/lib/catbird-util_2.12-0.15.0.jar"/>
+    <pathelement location="${basedir}/lib/cats-core_2.12-0.9.0.jar"/>
+    <pathelement location="${basedir}/lib/cats-kernel_2.12-0.9.0.jar"/>
+    <pathelement location="${basedir}/lib/cats-macros_2.12-0.9.0.jar"/>
+    <pathelement location="${basedir}/lib/commons-lang-2.6.jar"/>
+    <pathelement location="${basedir}/lib/finagle-base-http_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/finagle-core_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/finagle-http2_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/finagle-http_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/finagle-netty4-http_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/finagle-netty4_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/finagle-toggle_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/finch-core_2.12-0.15.1.jar"/>
+    <pathelement location="${basedir}/lib/finch-jackson_2.12-0.15.1.jar"/>
+    <pathelement location="${basedir}/lib/guava-19.0.jar"/>
+    <pathelement location="${basedir}/lib/jackson-annotations-2.8.0.jar"/>
+    <pathelement location="${basedir}/lib/jackson-core-2.8.8.jar"/>
+    <pathelement location="${basedir}/lib/jackson-databind-2.8.8.jar"/>
+    <pathelement location="${basedir}/lib/jackson-module-paranamer-2.8.4.jar"/>
+    <pathelement location="${basedir}/lib/jackson-module-scala_2.12-2.8.4.jar"/>
+    <pathelement location="${basedir}/lib/jsr305-2.0.1.jar"/>
+    <pathelement location="${basedir}/lib/machinist_2.12-0.6.1.jar"/>
+    <pathelement location="${basedir}/lib/macro-compat_2.12-1.1.1.jar"/>
+    <pathelement location="${basedir}/lib/netty-3.10.1.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-buffer-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-codec-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-codec-http-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-codec-http2-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-codec-socks-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-common-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-handler-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-handler-proxy-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-resolver-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-transport-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/netty-transport-native-epoll-4.1.10.Final.jar"/>
+    <pathelement location="${basedir}/lib/paranamer-2.8.jar"/>
+    <pathelement location="${basedir}/lib/scala-library-2.12.2.jar"/>
+    <pathelement location="${basedir}/lib/scala-parser-combinators_2.12-1.0.4.jar"/>
+    <pathelement location="${basedir}/lib/scala-reflect-2.12.2.jar"/>
+    <pathelement location="${basedir}/lib/shapeless_2.12-2.3.2.jar"/>
+    <pathelement location="${basedir}/lib/simulacrum_2.12-0.10.0.jar"/>
+    <pathelement location="${basedir}/lib/util-app_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-cache_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-codec_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-collection_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-core_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-function_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-hashing_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-jvm_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-lint_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-logging_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-registry_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-security_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-stats_2.12-6.45.0.jar"/>
+    <pathelement location="${basedir}/lib/util-tunable_2.12-6.45.0.jar"/>
+  </path>
+  
+  <path id="library.com.google.guava:guava:27.1-jre.classpath">
+    <pathelement location="${basedir}/lib/animal-sniffer-annotations-1.17.jar"/>
+    <pathelement location="${basedir}/lib/checker-qual-2.5.2.jar"/>
+    <pathelement location="${basedir}/lib/error_prone_annotations-2.2.0.jar"/>
+    <pathelement location="${basedir}/lib/failureaccess-1.0.1.jar"/>
+    <pathelement location="${basedir}/lib/guava-27.1-jre.jar"/>
+    <pathelement location="${basedir}/lib/j2objc-annotations-1.1.jar"/>
+    <pathelement location="${basedir}/lib/jsr305-3.0.2.jar"/>
+    <pathelement location="${basedir}/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"/>
+  </path>
+  
+  <path id="library.junit:junit:4.121.classpath">
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.13-beta-2.jar"/>
+  </path>
+  
+  <path id="library.org.apache.commons:commons-collections4:4.3.classpath">
+    <pathelement location="${basedir}/lib/commons-collections4-4.3.jar"/>
+  </path>
+  
+  <path id="library.org.apache.maven.plugins:maven-compiler-plugin:3.8.0.classpath">
+    <pathelement location="${basedir}/lib/aether-api-1.7.jar"/>
+    <pathelement location="${basedir}/lib/aether-impl-1.7.jar"/>
+    <pathelement location="${basedir}/lib/aether-spi-1.7.jar"/>
+    <pathelement location="${basedir}/lib/aether-util-1.7.jar"/>
+    <pathelement location="${basedir}/lib/asm-6.2.jar"/>
+    <pathelement location="${basedir}/lib/commons-io-2.5.jar"/>
+    <pathelement location="${basedir}/lib/maven-aether-provider-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-artifact-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-compiler-plugin-3.8.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-core-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-model-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-model-builder-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-plugin-api-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-repository-metadata-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-settings-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-settings-builder-3.0.jar"/>
+    <pathelement location="${basedir}/lib/maven-shared-incremental-1.1.jar"/>
+    <pathelement location="${basedir}/lib/maven-shared-utils-3.2.1.jar"/>
+    <pathelement location="${basedir}/lib/plexus-cipher-1.4.jar"/>
+    <pathelement location="${basedir}/lib/plexus-classworlds-2.2.3.jar"/>
+    <pathelement location="${basedir}/lib/plexus-compiler-api-2.8.4.jar"/>
+    <pathelement location="${basedir}/lib/plexus-compiler-javac-2.8.4.jar"/>
+    <pathelement location="${basedir}/lib/plexus-compiler-manager-2.8.4.jar"/>
+    <pathelement location="${basedir}/lib/plexus-component-annotations-1.5.5.jar"/>
+    <pathelement location="${basedir}/lib/plexus-interpolation-1.14.jar"/>
+    <pathelement location="${basedir}/lib/plexus-java-0.9.10.jar"/>
+    <pathelement location="${basedir}/lib/plexus-sec-dispatcher-1.3.jar"/>
+    <pathelement location="${basedir}/lib/plexus-utils-2.0.4.jar"/>
+    <pathelement location="${basedir}/lib/qdox-2.0-M8.jar"/>
+    <pathelement location="${basedir}/lib/sisu-guice-2.1.7.jar"/>
+    <pathelement location="${basedir}/lib/sisu-inject-bean-1.4.2.jar"/>
+    <pathelement location="${basedir}/lib/sisu-inject-plexus-1.4.2.jar"/>
+  </path>
+  
+  <path id="library.org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${basedir}/lib/hamcrest-2.1.jar"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-2.1.jar"/>
+  </path>
+  
+  <path id="library.org.slf4j:slf4j-android:1.7.25.classpath">
+    <pathelement location="${basedir}/lib/slf4j-android-1.7.25.jar"/>
+    <pathelement location="${basedir}/lib/slf4j-api-1.7.25.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/1.JavaSyntax/module_1.javasyntax.xml"/>
+  
+  <import file="${basedir}/2.JavaCore/module_2.javacore.xml"/>
+  
+  <import file="${basedir}/3.JavaMultithreading/module_3.javamultithreading.xml"/>
+  
+  <import file="${basedir}/4.JavaCollections/module_4.javacollections.xml"/>
+  
+  <import file="${basedir}/5.OnlineInternship/module_5.onlineinternship.xml"/>
+  
+  <import file="${basedir}/module_javarushtasks.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.1.javasyntax, clean.module.2.javacore, clean.module.3.javamultithreading, clean.module.4.javacollections, clean.module.5.onlineinternship, clean.module.javarushtasks" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.1.javasyntax, compile.module.2.javacore, compile.module.3.javamultithreading, compile.module.4.javacollections, compile.module.5.onlineinternship, compile.module.javarushtasks" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.javarushtasks:jar" value="${basedir}/out/artifacts/JavaRushTasks_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.JavaRushTasks.jar" value="${artifacts.temp.dir}/JavaRushTasks.jar"/>
+  </target>
+  
+  <target name="artifact.javarushtasks:jar" depends="init.artifacts, compile.module.4.javacollections, compile.module.1.javasyntax, compile.module.2.javacore, compile.module.3.javamultithreading, compile.module.5.onlineinternship, compile.module.javarushtasks" description="Build &#39;JavaRushTasks:jar&#39; artifact">
+    <property name="artifact.temp.output.javarushtasks:jar" value="${artifacts.temp.dir}/JavaRushTasks_jar"/>
+    <mkdir dir="${artifact.temp.output.javarushtasks:jar}"/>
+    <jar destfile="${temp.jar.path.JavaRushTasks.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset file="${basedir}/../3513/META-INF/MANIFEST.MF" prefix="META-INF"/>
+      <zipfileset dir="${4.javacollections.output.dir}"/>
+      <zipfileset dir="${1.javasyntax.output.dir}"/>
+      <zipfileset dir="${2.javacore.output.dir}"/>
+      <zipfileset dir="${3.javamultithreading.output.dir}"/>
+      <zipfileset dir="${5.onlineinternship.output.dir}"/>
+      <zipfileset dir="${javarushtasks.output.dir}"/>
+    </jar>
+    <copy file="${temp.jar.path.JavaRushTasks.jar}" tofile="${artifact.temp.output.javarushtasks:jar}/JavaRushTasks.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.javarushtasks:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.javarushtasks:jar}"/>
+    <copy todir="${artifact.output.javarushtasks:jar}">
+      <fileset dir="${artifact.temp.output.javarushtasks:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

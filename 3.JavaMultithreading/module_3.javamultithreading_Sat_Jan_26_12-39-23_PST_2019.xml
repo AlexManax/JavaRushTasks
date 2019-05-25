@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_3.javamultithreading" default="compile.module.3.javamultithreading">
+  <dirname property="module.3.javamultithreading.basedir" file="${ant.file.module_3.javamultithreading}"/>
+  
+  <property name="module.jdk.home.3.javamultithreading" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.3.javamultithreading" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.3.javamultithreading" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.3.javamultithreading" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="3.javamultithreading.output.dir" value="${module.3.javamultithreading.basedir}/../out/production/3.JavaMultithreading"/>
+  <property name="3.javamultithreading.testoutput.dir" value="${module.3.javamultithreading.basedir}/../out/test/3.JavaMultithreading"/>
+  
+  <path id="3.javamultithreading.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="3.javamultithreading.module.production.classpath">
+    <path refid="${module.jdk.classpath.3.javamultithreading}"/>
+  </path>
+  
+  <path id="3.javamultithreading.runtime.production.module.classpath">
+    <pathelement location="${3.javamultithreading.output.dir}"/>
+  </path>
+  
+  <path id="3.javamultithreading.module.classpath">
+    <path refid="${module.jdk.classpath.3.javamultithreading}"/>
+    <pathelement location="${3.javamultithreading.output.dir}"/>
+  </path>
+  
+  <path id="3.javamultithreading.runtime.module.classpath">
+    <pathelement location="${3.javamultithreading.testoutput.dir}"/>
+    <pathelement location="${3.javamultithreading.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.3.javamultithreading">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.3.javamultithreading">
+    <patternset refid="excluded.from.module.3.javamultithreading"/>
+  </patternset>
+  
+  <path id="3.javamultithreading.module.sourcepath">
+    <dirset dir="${module.3.javamultithreading.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.3.javamultithreading" depends="compile.module.3.javamultithreading.production,compile.module.3.javamultithreading.tests" description="Compile module 3.JavaMultithreading"/>
+  
+  <target name="compile.module.3.javamultithreading.production" depends="register.custom.compilers" description="Compile module 3.JavaMultithreading; production classes">
+    <mkdir dir="${3.javamultithreading.output.dir}"/>
+    <javac2 destdir="${3.javamultithreading.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.3.javamultithreading}/javac">
+      <compilerarg line="${compiler.args.3.javamultithreading}"/>
+      <bootclasspath refid="3.javamultithreading.module.bootclasspath"/>
+      <classpath refid="3.javamultithreading.module.production.classpath"/>
+      <src refid="3.javamultithreading.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.3.javamultithreading"/>
+    </javac2>
+    
+    <copy todir="${3.javamultithreading.output.dir}">
+      <fileset dir="${module.3.javamultithreading.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.3.javamultithreading.tests" depends="register.custom.compilers,compile.module.3.javamultithreading.production" description="compile module 3.JavaMultithreading; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.3.javamultithreading" description="cleanup module">
+    <delete dir="${3.javamultithreading.output.dir}"/>
+    <delete dir="${3.javamultithreading.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_1.javasyntax" default="compile.module.1.javasyntax">
+  <dirname property="module.1.javasyntax.basedir" file="${ant.file.module_1.javasyntax}"/>
+  
+  <property name="module.jdk.home.1.javasyntax" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.1.javasyntax" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.1.javasyntax" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.1.javasyntax" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="1.javasyntax.output.dir" value="${module.1.javasyntax.basedir}/../out/production/1.JavaSyntax"/>
+  <property name="1.javasyntax.testoutput.dir" value="${module.1.javasyntax.basedir}/../out/test/1.JavaSyntax"/>
+  
+  <path id="1.javasyntax.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="1.javasyntax.module.production.classpath">
+    <path refid="${module.jdk.classpath.1.javasyntax}"/>
+    <path refid="library.org.slf4j:slf4j-android:1.7.25.classpath"/>
+    <path refid="library.com.google.guava:guava:27.1-jre.classpath"/>
+    <path refid="library.org.apache.commons:commons-collections4:4.3.classpath"/>
+    <path refid="library.org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.junit:junit:4.121.classpath"/>
+  </path>
+  
+  <path id="1.javasyntax.runtime.production.module.classpath">
+    <pathelement location="${1.javasyntax.output.dir}"/>
+    <path refid="library.org.slf4j:slf4j-android:1.7.25.classpath"/>
+    <path refid="library.com.google.guava:guava:27.1-jre.classpath"/>
+    <path refid="library.org.apache.commons:commons-collections4:4.3.classpath"/>
+    <path refid="library.org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.junit:junit:4.121.classpath"/>
+  </path>
+  
+  <path id="1.javasyntax.module.classpath">
+    <path refid="${module.jdk.classpath.1.javasyntax}"/>
+    <pathelement location="${1.javasyntax.output.dir}"/>
+    <path refid="library.org.slf4j:slf4j-android:1.7.25.classpath"/>
+    <path refid="library.com.google.guava:guava:27.1-jre.classpath"/>
+    <path refid="library.org.apache.commons:commons-collections4:4.3.classpath"/>
+    <path refid="library.org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.junit:junit:4.121.classpath"/>
+  </path>
+  
+  <path id="1.javasyntax.runtime.module.classpath">
+    <pathelement location="${1.javasyntax.testoutput.dir}"/>
+    <pathelement location="${1.javasyntax.output.dir}"/>
+    <path refid="library.org.slf4j:slf4j-android:1.7.25.classpath"/>
+    <path refid="library.com.google.guava:guava:27.1-jre.classpath"/>
+    <path refid="library.org.apache.commons:commons-collections4:4.3.classpath"/>
+    <path refid="library.org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.junit:junit:4.121.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.1.javasyntax">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.1.javasyntax">
+    <patternset refid="excluded.from.module.1.javasyntax"/>
+  </patternset>
+  
+  <path id="1.javasyntax.module.sourcepath">
+    <dirset dir="${module.1.javasyntax.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.1.javasyntax" depends="compile.module.1.javasyntax.production,compile.module.1.javasyntax.tests" description="Compile module 1.JavaSyntax"/>
+  
+  <target name="compile.module.1.javasyntax.production" depends="register.custom.compilers" description="Compile module 1.JavaSyntax; production classes">
+    <mkdir dir="${1.javasyntax.output.dir}"/>
+    <javac2 destdir="${1.javasyntax.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.1.javasyntax}/javac">
+      <compilerarg line="${compiler.args.1.javasyntax}"/>
+      <bootclasspath refid="1.javasyntax.module.bootclasspath"/>
+      <classpath refid="1.javasyntax.module.production.classpath"/>
+      <src refid="1.javasyntax.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.1.javasyntax"/>
+    </javac2>
+    
+    <copy todir="${1.javasyntax.output.dir}">
+      <fileset dir="${module.1.javasyntax.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.1.javasyntax.tests" depends="register.custom.compilers,compile.module.1.javasyntax.production" description="compile module 1.JavaSyntax; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.1.javasyntax" description="cleanup module">
+    <delete dir="${1.javasyntax.output.dir}"/>
+    <delete dir="${1.javasyntax.testoutput.dir}"/>
+  </target>
+</project>
