@@ -1,9 +1,9 @@
-package com.javarush.task.task35.task3513;
+package view;
 
 import java.awt.*;
 
 public class Tile {
-    int value;
+    public int value;
 
     public Tile() {
         value = 0;

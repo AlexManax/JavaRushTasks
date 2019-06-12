@@ -1,4 +1,4 @@
-package com.javarush.task.task35.task3513;
+package com.company.model;
 
 @FunctionalInterface
 public interface Move {

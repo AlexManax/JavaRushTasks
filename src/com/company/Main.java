@@ -1,7 +1,9 @@
-package com.javarush.task.task35.task3513;
+package com.company;
+
+import com.company.controller.Controller;
+import com.company.model.Model;
 
 import javax.swing.*;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {

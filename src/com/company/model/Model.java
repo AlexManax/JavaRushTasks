@@ -1,12 +1,14 @@
-package com.javarush.task.task35.task3513;
+package com.company.model;
+
+import view.Tile;
 
 import java.util.*;
 
 public class Model {
     private static final int FIELD_WIDTH = 4;
     public Tile[][] gameTiles;
-    protected int score;
-    protected int maxTile;
+    public int score;
+    public int maxTile;
     private Stack<Tile[][]> previousStates = new Stack<>();
     private Stack<Integer> previousScores = new Stack<>();
     private boolean isSaveNeeded = true;
@@ -34,7 +36,7 @@ public class Model {
         }
     }
 
-    protected void resetGameTiles() {
+    public void resetGameTiles() {
         score = 0;
         maxTile = 0;
         gameTiles = new Tile[FIELD_WIDTH][FIELD_WIDTH];

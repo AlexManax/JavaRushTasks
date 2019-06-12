@@ -1,4 +1,9 @@
-package com.javarush.task.task35.task3513;
+package com.company.controller;
+
+import com.company.model.Model;
+import com.company.view.View;
+
+import view.Tile;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

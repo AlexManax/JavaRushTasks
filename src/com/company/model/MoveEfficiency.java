@@ -1,4 +1,4 @@
-package com.javarush.task.task35.task3513;
+package com.company.model;
 
 public class MoveEfficiency implements Comparable<MoveEfficiency> {
     private int numberOfEmptyTiles;
