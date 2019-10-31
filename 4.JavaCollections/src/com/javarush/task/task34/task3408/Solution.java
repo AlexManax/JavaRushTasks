@@ -1,5 +1,5 @@
 package com.javarush.task.task34.task3408;
-import org.slf4j.Logger;
+
 /* 
 Кэширование
 */
