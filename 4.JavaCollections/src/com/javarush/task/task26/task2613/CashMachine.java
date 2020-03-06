@@ -29,7 +29,7 @@ public class CashMachine {
     }
         catch (InterruptOperationException e)
         {
-//            ConsoleHelper.printExitMessage();
+            ConsoleHelper.printExitMessage();
             CommandExecutor.execute(Operation.EXIT);
         }
 

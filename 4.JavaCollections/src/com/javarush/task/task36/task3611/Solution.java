@@ -21,8 +21,23 @@ public class Solution {
     }
 
     public Set<Integer> getAllFriendsAndPotentialFriends(int index, int deep) {
-        //напишите тут ваш код
-        return null;
+        Set<Integer> result = new HashSet<>();
+        if (deep == 0) return result;
+        for (int i = 0; i < humanRelationships.length; i++) {
+            if (i < index) {
+                if (humanRelationships[index][i]) {
+                    result.add(i);
+                    result.addAll(getAllFriendsAndPotentialFriends(i, deep - 1));
+                }
+            } else {
+                if (humanRelationships[i][index]) {
+                    result.add(i);
+                    result.addAll(getAllFriendsAndPotentialFriends(i, deep - 1));
+                }
+            }
+        }
+        result.remove(index);
+        return result;
     }
 
     // Remove from the set the people with whom you already have a relationship

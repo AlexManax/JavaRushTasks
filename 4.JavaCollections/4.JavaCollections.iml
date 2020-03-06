@@ -10,5 +10,6 @@
     <orderEntry type="library" name="org.apache.httpcomponents:httpclient-osgi:4.3.3" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="javax.mail:javax.mail-api:1.6.2" level="project" />
+    <orderEntry type="library" name="org.slf4j:slf4j-api:1.7.29" level="project" />
   </component>
 </module>
